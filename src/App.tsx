@@ -1,4 +1,4 @@
-import type { Component } from 'solid-js'
+import { Component, lazy, Show } from 'solid-js'
 import { createSignal } from 'solid-js'
 import { List } from './components/List'
 import { User, getUserList } from './mock'
@@ -9,10 +9,24 @@ const [model, setModel] = createSignal('')
 const increment = () => setCount(count() + 1)
 const name = 'Solid'
 
+// 懒加载方案
+const Lazy = lazy(async () => {
+  // 模拟延迟
+  await new Promise((resolve) => setTimeout(resolve, 5000))
+  return import('./components/Lazy')
+})
+
 const App: Component = () => {
   return (
     <>
-      <p class="text-4xl text-green-700 text-center py-14">{`Hello ${name}`}</p>
+      <Lazy name={name} />
+      {/* 饰范 show 用法 */}
+      <Show
+        when={count() > 0}
+        fallback={<h3 class="text-4xl text-green-700 text-center py-10">Please Clinks Button</h3>}
+      >
+        <h3 class="text-4xl text-green-700 text-center py-10">{`Hello ${name}`}</h3>
+      </Show>
       <button
         type="button"
         class=" bg-slate-300 rounded-md px-12 mx-auto table font-bold text-center"
