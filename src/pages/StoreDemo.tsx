@@ -1,12 +1,12 @@
 import { For } from 'solid-js'
-import { createStore } from 'solid-js/store'
 import appStore from '../store'
 
 // 这是个 Solid Store 使用饰范
 export default function StoreDemo() {
   let input
-  let todoId = 0
+  // 这里定义 toduId 是错误的，每次路由切换到资组件会重新执行一次函数，也应该在 appStroe 中定义，或者先从 appStroe 中继承
   const [store, setStore] = appStore
+  let todoId = store.todos.length || 0
   const addTodo = (text) => {
     setStore('todos', (todos) => [...todos, { id: ++todoId, text, completed: false }])
   }
