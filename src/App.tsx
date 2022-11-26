@@ -1,6 +1,7 @@
 import { Component, lazy, Show } from 'solid-js'
 import { Routes, Route } from '@solidjs/router'
 import Header from './components/Header'
+import Tip from './components/Tip'
 
 import BasicsDemo from './pages/BasicsDemo'
 import StoreDemo from './pages/StoreDemo'
@@ -18,6 +19,9 @@ const App: Component = () => {
         <Route path="/AsyncDemo/:id" component={AsyncDemo} data={() => ({ key: 'demo' })} />
         <Route path="/StoreDemo" component={StoreDemo} />
       </Routes>
+
+      {/* 示范 Solid Portal 传送门用法 */}
+      <Tip />
     </>
   )
 }
