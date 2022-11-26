@@ -1,4 +1,4 @@
-import { createSignal, lazy, Show } from 'solid-js'
+import { createSignal, lazy, Show, Suspense } from 'solid-js'
 import type { Component } from 'solid-js'
 import { List } from '../components/List'
 import { getUserList } from '../mock'
@@ -6,7 +6,7 @@ import { getUserList } from '../mock'
 // 懒加载方案
 const Lazy = lazy(async () => {
   // 模拟延迟
-  await new Promise((resolve) => setTimeout(resolve, 5000))
+  await new Promise((resolve) => setTimeout(resolve, 3000))
   return import('../components/Lazy')
 })
 
@@ -19,18 +19,22 @@ export default function BasicsDemo() {
 
   return (
     <>
-      <Lazy name={name} />
-
       {/* 饰范 show 用法 */}
       <Show
         when={count() > 0}
-        fallback={<h3 class="text-4xl text-green-700 text-center py-10">Basisc Demo</h3>}
+        fallback={<h1 class="text-4xl text-green-700 text-center py-10">Basisc Demo</h1>}
       >
-        <h3 class="text-4xl text-green-700 text-center py-10">Clinks Button</h3>
+        <h1 class="text-4xl text-green-700 text-center py-10">Clinks Button</h1>
       </Show>
+
+      {/* Suspense 比 Show 更适合针对异步场景优化页面，可以协调多个异步事件，Suspense 作为一个边界，可以在这些异步事件未完成时显示 fallback 占位而不是部分加载的内容。 */}
+      <Suspense fallback={<p class="text-4xl text-gray-500 text-center py-2">Loading...</p>}>
+        <Lazy name={name} />
+      </Suspense>
+
       <button
         type="button"
-        class=" bg-slate-300 rounded-md px-12 mx-auto table font-bold text-center"
+        class=" bg-slate-300 rounded-md px-12 my-4 mx-auto table font-bold text-center"
         onClick={increment}
       >
         {'Clicks'} {count()}
