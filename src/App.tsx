@@ -16,6 +16,7 @@ const App: Component = () => {
 
       {/* 示范 SPA Router 用法，看起来像是监听导航栏去加载组件 */}
       <Routes>
+        <Route path="/" component={Blog} />
         <Route path="/Blog" component={Blog} />
         <Route path="/BasicsDemo" component={BasicsDemo} />
         <Route path="/AsyncDemo/:id" component={AsyncDemo} data={() => ({ key: 'demo' })} />

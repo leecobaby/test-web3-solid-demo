@@ -1949,7 +1949,21 @@ slash@^3.0.0:
   resolved "https://registry.npmmirror.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-solid-js@^1.5.1:
+solid-headless@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.npmmirror.com/solid-headless/-/solid-headless-0.13.0.tgz#a2cb09cbb9397dfcde1770c4d020cde3ffd7ae3e"
+  integrity sha512-N118iPl7W5lyug4K+4c0cwM8YR2yEVJ/3H4wq6tVijATHfXfLnB1ACFI5GGHSXlwu70PUzaGSKwcVqLlloUMyA==
+  dependencies:
+    solid-use "^0.5.0"
+
+solid-heroicons@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.npmmirror.com/solid-heroicons/-/solid-heroicons-3.1.1.tgz#95f47424b246017acc4297cad4a1cc39ef384673"
+  integrity sha512-wfU/SqxqxWxInvfFlKJfCBPnJ94Zq1GQFiFL3M0KwZzT81lSF5yIC4HA/Czp3DYrn+dUumjO0qdrx8Ab3cy2sA==
+  dependencies:
+    solid-js "^1.6.2"
+
+solid-js@^1.5.1, solid-js@^1.6.2:
   version "1.6.2"
   resolved "https://registry.npmmirror.com/solid-js/-/solid-js-1.6.2.tgz#0030960cf697b3cad0cc9046f4e9388dcd2bc7d2"
   integrity sha512-AZBsj+Yn1xliniTTeuQKG9V7VQVkQ8lZmSKvBjpcVSoZeF7nvt/N5f7Kcsx6QSufioa2YgvBjkIiA0cM0qhotw==
@@ -1972,6 +1986,11 @@ solid-styled-components@^0.28.5:
   dependencies:
     csstype "^3.1.0"
     goober "^2.1.10"
+
+solid-use@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npmmirror.com/solid-use/-/solid-use-0.5.0.tgz#4414bf85ce001d36738a2ac7fd871a90fa809d99"
+  integrity sha512-z1AaS99SL3gNP70K4+XIVKGXDRI56m3Q6Q4X63bfgw0kaN6cwT4SAyFZAmIRjHcvf5rOMRQfNgUV4YVDha+LcQ==
 
 source-map-js@^1.0.2:
   version "1.0.2"
