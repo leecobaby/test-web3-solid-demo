@@ -8,7 +8,8 @@ import { css } from 'solid-styled-components'
 import IconLogo from '../assets/images/logo.png'
 import IconTwitter from '../assets/images/twitter.png'
 import IconTelegram from '../assets/images/telegram.png'
-import IconDiscord from '../assets/images/discord.png'
+// import IconDiscord from '../assets/images/discord.png'
+// console.log(IconDiscord)
 
 const menus = [
   {
@@ -65,7 +66,7 @@ const socials = [
     path: 'https://discord.gg/leecobaby',
     comment: (
       <button class=" px-2 py-3 -my-3 rounded-2xl border border-[#FF77E5] border-spacing-12 whitespace-nowrap">
-        <img class="inline-block" src={IconDiscord} alt="Discord" />
+        <img class="inline-block" src={IconTwitter} alt="Discord" />
         <span class=" hidden ml-2 text-[#FF77E5] xl:inline">Join Discord</span>
       </button>
     )
