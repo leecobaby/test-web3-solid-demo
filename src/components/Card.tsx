@@ -1,4 +1,5 @@
 import { splitProps } from 'solid-js'
+import { A } from '@solidjs/router'
 
 interface CardProps {
   [key: string]: any
@@ -23,10 +24,10 @@ export default function Card(props: CardProps) {
       <div class="flex-1 p-4 space-y-8 flex flex-col justify-between">
         <div class="flex-1">
           <h3 class=" text-2xl leading-9 font-bold text-white my-4">
-            <a href={props.product.href}>
+            <A href={props.localpath + '/' + props.product.id}>
               <span aria-hidden="true" class="absolute inset-0"></span>
               {props.product.name}
-            </a>
+            </A>
           </h3>
           <p class=" font-extralight text-white line-clamp-6">{props.product.description}</p>
         </div>

@@ -82,61 +82,63 @@ const MatchStyle2 = css`
 
 export default function Header() {
   return (
-    // Full Width Header
-    <Disclosure defaultOpen={false} as="div" class="relative">
-      {/* Wrapper */}
-      <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 text-white">
-        {/*  Container */}
-        <div class="flex items-center justify-between border-b-2 border-gray-700 py-8 md:space-x-10">
-          {/* Logo */}
-          <div class="flex justify-start  xl:flex-[0.5_0.5_0%]">
-            <a href="#">
-              <span class="sr-only">RUBY DEX</span>
-              <img class="h-4 w-auto sm:h-6" src={IconLogo} alt="RUBY DEX" />
-            </a>
-          </div>
-          {/* Bars */}
-          <div class="-my-2 md:hidden">
-            <DisclosureButton class=" align-middle rounded-md -m-1 p-1  text-slate-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF77E5]">
-              <span class="sr-only">Open menu</span>
-              <Icon path={bars_3} class=" w-8" />
-            </DisclosureButton>
-          </div>
-          {/* Navigates */}
-          <nav class="hidden space-x-10 md:flex lg:flex-initial">
-            <ul class="flex justify-center items-center space-x-4">
-              <For each={menus}>
-                {(menu) => (
-                  <li>
-                    <A
-                      class=" font-semibold hover:underline py-2"
-                      classList={{
-                        [MatchStyle]: !!useMatch(() => menu.path)()
-                      }}
-                      href={menu.path}
-                    >
-                      {menu.name}
-                    </A>
-                  </li>
-                )}
-              </For>
-            </ul>
-          </nav>
-          {/* Socials */}
-          <div class="hidden items-center justify-end space-x-4 xl:flex xl:flex-1">
-            <For each={socials}>
-              {(social) => (
-                <a
-                  href={social.path}
-                  class=" text-gray-400 hover:text-gray-500"
-                  target="_black"
-                  rel="noreferrer"
-                >
-                  {social.comment}
-                </a>
+    // {/* Wrapper */}
+    <Disclosure
+      defaultOpen={false}
+      as="div"
+      class="relative mx-auto max-w-screen-2xl px-4 sm:px-6 text-white"
+    >
+      {/*  Container */}
+      <div class="flex items-center justify-between border-b-2 border-gray-700 py-8 md:space-x-10">
+        {/* Logo */}
+        <div class="flex justify-start  xl:flex-[0.5_0.5_0%]">
+          <a href="#">
+            <span class="sr-only">RUBY DEX</span>
+            <img class="h-4 w-auto sm:h-6" src={IconLogo} alt="RUBY DEX" />
+          </a>
+        </div>
+        {/* Bars */}
+        <div class="-my-2 md:hidden">
+          <DisclosureButton class=" align-middle rounded-md -m-1 p-1  text-slate-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF77E5]">
+            <span class="sr-only">Open menu</span>
+            <Icon path={bars_3} class=" w-8" />
+          </DisclosureButton>
+        </div>
+        {/* Navigates */}
+        <nav class="hidden space-x-10 md:flex lg:flex-initial">
+          <ul class="flex justify-center items-center space-x-4">
+            <For each={menus}>
+              {(menu) => (
+                <li>
+                  <A
+                    class=" font-semibold hover:underline py-2"
+                    classList={{
+                      [MatchStyle]: !!useMatch(() => menu.path)()
+                    }}
+                    href={menu.path}
+                  >
+                    {menu.name}
+                  </A>
+                </li>
               )}
             </For>
-            {/* <a
+          </ul>
+        </nav>
+        {/* Socials */}
+        <div class="hidden items-center justify-end space-x-4 xl:flex xl:flex-1">
+          <For each={socials}>
+            {(social) => (
+              <a
+                href={social.path}
+                class=" text-gray-400 hover:text-gray-500"
+                target="_black"
+                rel="noreferrer"
+              >
+                {social.comment}
+              </a>
+            )}
+          </For>
+          {/* <a
               href="#"
               class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
             >
@@ -148,33 +150,32 @@ export default function Header() {
             >
               Sign up
             </a> */}
-          </div>
         </div>
-
-        {/* Mobile Menu */}
-        <DisclosurePanel class="p-2 md:hidden">
-          <nav class="flex">
-            <ul class="flex flex-col w-full">
-              <For each={menus}>
-                {(menu) => (
-                  <li class="w-full h-10 block relative">
-                    <A
-                      href={menu.path}
-                      aria-hidden="true"
-                      class=" block px-1 py-2 rounded-md font-semibold hover:bg-pink-300 hover:bg-opacity-80  absolute inset-0"
-                      classList={{
-                        [MatchStyle2]: !!useMatch(() => menu.path)()
-                      }}
-                    >
-                      {menu.name}
-                    </A>
-                  </li>
-                )}
-              </For>
-            </ul>
-          </nav>
-        </DisclosurePanel>
       </div>
+
+      {/* Mobile Menu */}
+      <DisclosurePanel class="p-2 md:hidden">
+        <nav class="flex">
+          <ul class="flex flex-col w-full">
+            <For each={menus}>
+              {(menu) => (
+                <li class="w-full h-10 block relative">
+                  <A
+                    href={menu.path}
+                    aria-hidden="true"
+                    class=" block px-1 py-2 rounded-md font-semibold hover:bg-pink-300 hover:bg-opacity-80  absolute inset-0"
+                    classList={{
+                      [MatchStyle2]: !!useMatch(() => menu.path)()
+                    }}
+                  >
+                    {menu.name}
+                  </A>
+                </li>
+              )}
+            </For>
+          </ul>
+        </nav>
+      </DisclosurePanel>
     </Disclosure>
   )
 }

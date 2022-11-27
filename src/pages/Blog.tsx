@@ -1,5 +1,12 @@
-import { useParams, useNavigate, useLocation, useRouteData, useMatch } from '@solidjs/router'
-import type { Location, RouteDataFunc } from '@solidjs/router'
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+  useRouteData,
+  useMatch,
+  useBeforeLeave
+} from '@solidjs/router'
+import type { Location, BeforeLeaveEventArgs } from '@solidjs/router'
 import { createSignal, createResource, For } from 'solid-js'
 import { css } from 'solid-styled-components'
 import Card from '../components/Card'
@@ -96,13 +103,10 @@ const MatchStyle = css`
 `
 
 export default function Blog() {
-  const navigate = useNavigate()
   const location = useLocation<Location>()
-  const match = useMatch(() => location.pathname)
-  console.log(navigate, match())
 
-  const [userId, setUserId] = createSignal()
-  const [user] = createResource(userId, fetchUser)
+  // const [userId, setUserId] = createSignal()
+  // const [user] = createResource(userId, fetchUser)
 
   return (
     <div>
@@ -149,7 +153,9 @@ export default function Blog() {
         <h2 class="sr-only">Blog List</h2>
 
         <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-          <For each={products}>{(product) => <Card product={product} />}</For>
+          <For each={products}>
+            {(product) => <Card product={product} localpath={location.pathname} />}
+          </For>
         </div>
       </div>
     </div>
