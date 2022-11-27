@@ -10,6 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "autoprefixer": "^10.4.8",
     "eslint": "^8.28.0",
     "eslint-plugin-solid": "^0.8.0",

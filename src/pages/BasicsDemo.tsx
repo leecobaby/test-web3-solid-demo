@@ -81,6 +81,9 @@ export default function BasicsDemo() {
           追加变色 {user().length}
         </button>
       </div>
+      <div>
+        <pre class=" bg-slate-50 text-gray-400">{JSON.stringify(user(), null, 2)}</pre>
+      </div>
       <List items={user()} count={count()} model={model()} />
     </>
   )

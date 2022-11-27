@@ -3,8 +3,8 @@ import { A } from '@solidjs/router'
 export default function Header() {
   return (
     <nav class=" flex justify-center space-x-4">
-      <A class=" text-blue-600 hover:underline" href="/BasicsDemo">
-        Basisc Demo
+      <A class=" text-blue-600 hover:underline" href="/Blog">
+        Blog
       </A>
       <A class=" text-blue-600 hover:underline" href="/AsyncDemo/1">
         Async Demo
