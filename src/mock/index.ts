@@ -23,4 +23,8 @@ export function getUserList(num: number) {
   return User
 }
 
-console.log(User)
+export function fetchMarkDown() {
+  return fetch('https://raw.githubusercontent.com/solidjs/solid/master/README.md').then((res) =>
+    res.text()
+  )
+}

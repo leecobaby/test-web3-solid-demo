@@ -1,11 +1,9 @@
 import { Accessor, createResource, For } from 'solid-js'
 import { marked } from 'marked'
-import { markdown } from '../mock/mark'
 import img1 from '../assets/images/img1.png'
 import { Icon } from 'solid-heroicons'
 import { chevronRight, home } from 'solid-heroicons/solid'
 import { A, useLocation, useRouteData, Location } from '@solidjs/router'
-import { Path } from '@solidjs/router/dist/types'
 
 marked.setOptions({
   renderer: new marked.Renderer(),
@@ -16,6 +14,12 @@ marked.setOptions({
   smartLists: true, // 使用比原生markdown更时髦的列表
   smartypants: false // 使用更为时髦的标点
 })
+
+export function fetchMarkDown() {
+  return fetch('https://raw.githubusercontent.com/solidjs/solid/master/README.md').then((res) =>
+    res.text()
+  )
+}
 
 const products = {
   id: 1,
@@ -38,14 +42,15 @@ const pages = [
 ]
 
 export default function BlogDetail() {
-  const backPath = useRouteData<Accessor<string>>()
+  const backHref = useRouteData<Accessor<string>>()
+  const [content] = createResource(fetchMarkDown)
 
   return (
     <div class="w-full h-full">
       {/* navigation */}
       <div class=" max-w-5xl mx-10 my-12 flex flex-col space-y-4  xl:mx-auto">
         <div class=" text-slate-100">
-          <A href={backPath}>Back</A>
+          <A href={backHref}>Back</A>
         </div>
         <nav class="flex" aria-label="Breadcrumb">
           <ol role="list" class="flex items-center space-x-4">
@@ -82,7 +87,7 @@ export default function BlogDetail() {
       </div>
 
       {/* main */}
-      <div class=" max-w-3xl mx-10 flex flex-col  md:mx-auto">
+      <div class=" max-w-4xl mx-10 flex flex-col  md:mx-auto">
         <div class=" w-full h-full aspect-w-16 aspect-h-9 rounded-[20px] overflow-hidden">
           <img
             src={products.imageSrc}
@@ -91,6 +96,7 @@ export default function BlogDetail() {
           />
         </div>
 
+        {/* author */}
         <div class=" my-12 flex items-center justify-between">
           <div class="flex-none">
             <span class="sr-only">{products.name}</span>
@@ -102,9 +108,10 @@ export default function BlogDetail() {
           <p class="text-base font-extralight text-white">{products.date}</p>
         </div>
 
+        {/* content */}
         <article
-          class="prose dark:prose-invert lg:prose-xl"
-          innerHTML={marked.parse(markdown)}
+          class="prose max-w-none prose-img:m-0 dark:prose-invert lg:prose-xl lg:prose-img:m-0"
+          innerHTML={marked.parse(content() || 'Loading...')}
         ></article>
       </div>
     </div>

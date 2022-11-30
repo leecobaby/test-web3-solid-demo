@@ -17,7 +17,7 @@ export default function Card(props: CardProps) {
         <img
           src={props.product.imageSrc}
           alt={props.product.imageAlt}
-          class="w-full h-full object-center object-cover sm:w-full sm:h-full"
+          class="w-full h-full scale-110 object-center object-cover sm:w-full sm:h-full"
         />
       </div>
 

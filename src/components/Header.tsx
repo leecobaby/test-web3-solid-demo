@@ -2,14 +2,12 @@ import { For } from 'solid-js'
 import { A, useLocation, useMatch } from '@solidjs/router'
 import type { Location } from '@solidjs/router'
 import { Icon } from 'solid-heroicons'
-import { bars_3 } from 'solid-heroicons/outline'
+import { bars_3, xMark } from 'solid-heroicons/outline'
 import { Disclosure, DisclosureButton, DisclosurePanel } from 'solid-headless'
 import { css } from 'solid-styled-components'
 import IconLogo from '../assets/images/logo.png'
 import IconTwitter from '../assets/images/twitter.png'
 import IconTelegram from '../assets/images/telegram.png'
-// import IconDiscord from '../assets/images/discord.png'
-// console.log(IconDiscord)
 
 const menus = [
   {
@@ -66,7 +64,7 @@ const socials = [
     path: 'https://discord.gg/leecobaby',
     comment: (
       <button class=" px-2 py-3 -my-3 rounded-2xl border border-[#FF77E5] border-spacing-12 whitespace-nowrap">
-        <img class="inline-block" src={IconTwitter} alt="Discord" />
+        <img class="inline-block" src="/Discord.png" alt="Discord" />
         <span class=" hidden ml-2 text-[#FF77E5] xl:inline">Join Discord</span>
       </button>
     )
@@ -101,8 +99,17 @@ export default function Header() {
         {/* Bars */}
         <div class="-my-2 md:hidden">
           <DisclosureButton class=" align-middle rounded-md -m-1 p-1  text-slate-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#FF77E5]">
-            <span class="sr-only">Open menu</span>
-            <Icon path={bars_3} class=" w-8" />
+            {/* <span class="sr-only">Open menu</span> */}
+            {({ isOpen }) => (
+              <>
+                <span class="sr-only">Open menu</span>
+                {isOpen() ? (
+                  <Icon class="h-6 w-6" path={xMark} />
+                ) : (
+                  <Icon class="h-6 w-6" path={bars_3} />
+                )}
+              </>
+            )}
           </DisclosureButton>
         </div>
         {/* Navigates */}

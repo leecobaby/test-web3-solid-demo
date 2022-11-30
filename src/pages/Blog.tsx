@@ -118,28 +118,28 @@ export default function Blog() {
       </h1>
 
       {/* Navigation switch */}
-      <nav class="flex justify-center my-4">
-        <ul class="flex items center space-x-4 text-white">
+      <nav class="flex justify-center my-4 w-full">
+        <ul class="w-full flex flex-col items-center justify-center space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 text-white">
           <li>
             <button
-              class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300"
+              class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300 whitespace-nowrap"
               classList={{ [MatchStyle]: true }}
             >
               All
             </button>
           </li>
           <li>
-            <button class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300">
+            <button class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300 whitespace-nowrap">
               New Markets
             </button>
           </li>
           <li>
-            <button class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300">
+            <button class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300 whitespace-nowrap">
               Announcements
             </button>
           </li>
           <li>
-            <button class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300">
+            <button class="border border-gray-50 border-opacity-20 rounded-3xl px-4 py-1 bg-white bg-opacity-10 hover:text-gray-300 whitespace-nowrap">
               Promotions
             </button>
           </li>

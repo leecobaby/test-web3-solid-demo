@@ -6,3 +6,7 @@
 body {
   background: #000;
 }
+
+img {
+  display: inline-block
+}
